@@ -1,31 +1,17 @@
- 
- function calculator(operator , inputs) {
- 
-    if (inputs.length < 2) {
-        throw new Error(`inputs should have length >= 2`);
+
+
+
+function CalculadoraIR(desc, valorRenddimento) {
+ export default function getTotal(params) {
+    var total = 0;
+    for (var i = 0; i < params.length; i++) {
+      total += params[i];
     }
- 
-    switch (operator) {
-        case '+':
-            return inputs.reduce((prev, curr) => prev + curr);
-        case '-':
-            return inputs.reduce((prev, curr) => prev - curr);
-        case '*':
-            return inputs.reduce((prev, curr) => prev * curr);
-        case '/':
-            return inputs.reduce((prev, curr) => prev / curr);
-        default:
-            throw new Error(`Unknown operator ${operator}`);
-    }
+    return total
+  }
+
+  return { desc, total }
 }
 
 
-function calculatorInvestimento(p,i,n,ir) {
- const vb = p*(1+(i/100))**(n/365)
- const a = (vb-((vb-p)*(ir/100)))
- console.log(a)
- return a
-}
-module.exports.calculator=calculator
-
-module.exports.calculatorInvestimento=calculatorInvestimento
+module.exports.CalculadoraIR = CalculadoraIR
