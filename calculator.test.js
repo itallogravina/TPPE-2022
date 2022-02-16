@@ -1,4 +1,4 @@
-const  = require('./calculator')
+const calculator = require('./calculator')
 
 // describe('Calculator', () => {
 //     it('throws error when input.length < 2', () => {
@@ -40,34 +40,34 @@ const  = require('./calculator')
 //     });
 // });
 
-
-
-describe('getToralRend', () => {
-  it('cadastra 1', () => {
-    const Descri ="Salario"
-    const Rendi = 10000
-    expect(calculator.CalculadoraIR(Descri,Rendi)).toEqual({"desc": "Salario", "valorRenddimento": 10000,});
-
-  });
+describe("add function", () => {
+  const add = (x, y) => x + y;
+  it.each([
+    [{ a: 1 , b: 2 , c:3 }, 6]
+  ])(
+    `should return proper result when passed arguments are: %i, %i`,
+    (x, result) => {
+      expect(calculator.getTotal(x)).toEqual(result);
+    }
+  );
 });
+// describe('CadastraRendimentos', () => {
+//   it('Intro ', () => {
+//     const Descri ="Salario"
+//     const Rendi = 10000
+//     expect(calculator.CalculadoraIR(Descri,Rendi)).toEqual({"desc": "Salario", "valorRenddimento": 10000,});
 
-describe('CadastraRendimentos', () => {
-  it('Intro ', () => {
-    const Descri ="Salario"
-    const Rendi = 10000
-    expect(calculator.CalculadoraIR(Descri,Rendi)).toEqual({"desc": "Salario", "valorRenddimento": 10000,});
+//   });
+//   it('Intro 2 ', () => {
+//     const Descri =["Salario","Aluguel"]
+//     const Rendi = [8000,2000]
+//     expect(calculator.CalculadoraIR(Descri,Rendi)).toEqual({"desc": ["Salario","Aluguel"], "valorRenddimento": [8000, 2000,]});
 
-  });
-  it('Intro 2 ', () => {
-    const Descri =["Salario","Aluguel"]
-    const Rendi = [8000,2000]
-    expect(calculator.CalculadoraIR(Descri,Rendi)).toEqual({"desc": ["Salario","Aluguel"], "valorRenddimento": [8000, 2000,]});
+//   });
+//   it('Intro 2 ', () => {
+//     const Descri =["Salario","Aluguel","Dividendos"]
+//     const Rendi = [7000,2000,1000]
+//     expect(calculator.CalculadoraIR(Descri,Rendi)).toEqual({"desc": Descri, "valorRenddimento": Rendi});
 
-  });
-  it('Intro 2 ', () => {
-    const Descri =["Salario","Aluguel","Dividendos"]
-    const Rendi = [7000,2000,1000]
-    expect(calculator.CalculadoraIR(Descri,Rendi)).toEqual({"desc": Descri, "valorRenddimento": Rendi});
-
-  });
-})
+//   });
+// })

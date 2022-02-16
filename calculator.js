@@ -1,17 +1,18 @@
 
 
 
-function CalculadoraIR(desc, valorRenddimento) {
- export default function getTotal(params) {
-    var total = 0;
-    for (var i = 0; i < params.length; i++) {
-      total += params[i];
+   function getTotal(obj) {
+    var sum = 0;
+    for( var el in obj ) {
+      if( obj.hasOwnProperty( el ) ) {
+        sum += parseFloat( obj[el] );
+      }
     }
-    return total
+    return sum;
   }
-
-  return { desc, total }
+function CalculadoraIR(desc, valorRenddimento) {
+  return { desc, valorRenddimento }
 }
 
 
-module.exports.CalculadoraIR = CalculadoraIR
+module.exports = {CalculadoraIR,getTotal }
