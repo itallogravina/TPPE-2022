@@ -64,25 +64,33 @@ function getBasedeCalculo(rend ,previdencia, dependentes,pensao) {
 
 function Imposto(p) {
   const i = 1903.98
-
-  console.log(i,p)
   if (p<=i) {
-    return 0
+    return  {alicota:"0%",imposto: 0}
   }
   else if( (p>i) && (p<=2826.65)){
-    return Matp-i.toFixed(2)
+    const temp = parseFloat(((p-i)*0.075).toFixed(4))
+    return  {alicota:"7,5%",imposto: temp}
   }
   else if( p>2826.65 && p<= 3751.05 ){
-    return round(p-i-922.67, 2) 
+    const temp = parseFloat(((p-i-922.67)*0.15).toFixed(4))
+    return  {alicota:"15%",imposto: temp}
   }
   else if (p>3751.05 && p<= 4664.68){
-    return round(p-i-922.67-924.40, 2) 
+    const temp = parseFloat(((p-i-922.67-924.40)*0.225).toFixed(4))
+    return  {alicota:"22,5%",imposto: temp}
   }
   if(p>4664.68 ){
-
-    return round(p-i-922.67-924.40-913.63,2)
+    const temp = parseFloat(((p-i-922.67-924.40-913.63)*0.275).toFixed(4))
+    return  {alicota:"27,5%",imposto: temp}
   }
   
+}
+
+function CalculandoAlicota(rend ,previdencia, dependentes,pensao) {
+  const baseCalculo= getBasedeCalculo(rend ,previdencia, dependentes,pensao)
+  const a =Imposto(baseCalculo)
+  const b =a.imposto/baseCalculo
+  return b
 }
 
 module.exports = {
@@ -92,5 +100,6 @@ module.exports = {
   getTotalPensao,
   getSomatoriaDeducao,
   getBasedeCalculo,
-  Imposto
+  Imposto,
+  CalculandoAlicota
 };
